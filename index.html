@@ -4,7 +4,29 @@
     <meta charset="utf-8">
     <title>title</title>
   </head>
+  <script>
+	let promise = fetch("https://api-mgmt-luol.azure-api.net",{
+  		headers: {
+    	"Ocp-Apim-Subscription-Key": "30366a7416404b13b135b01cfe0fb4d4",
+  	}}
+	).then(handleResponse)
+	.then(handleData);
+
+	function handleResponse(r) {
+		console.log(r);
+
+		return r.json();
+	}
+
+	function handleData(d) {
+		let div = document.getElementById("temp");
+
+		temp.innerText = d.temp;
+
+		console.log(d);
+	}
+  </script>
   <body>
-HELLO WORLD
+	<div id="temp"></div>
   </body>
 </html>
